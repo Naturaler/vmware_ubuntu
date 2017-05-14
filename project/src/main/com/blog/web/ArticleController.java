@@ -4,6 +4,7 @@ import com.blog.dto.ArticleDto;
 import com.blog.dto.ResponseDto;
 import com.blog.entity.Article;
 import com.blog.global.Status;
+import com.blog.global.StatusFactory;
 import com.blog.service.IArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by xin on 17-5-13.
@@ -26,11 +26,9 @@ public class ArticleController {
     @GetMapping("/list")
     public ResponseDto listArticles() {
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setStatus(Status.OperateSuccess);
-        ArticleDto articleDto = new ArticleDto();
-//        articleDto.setArticle();
-//        responseDto.setData();
-        List<Article> articles = articleService.listArticles();
+//        responseDto.setStatus(Status.OperateSuccess);
+        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setData(ArticleDto.getINstances(articleService.listArticles()));
         return responseDto;
     }
 

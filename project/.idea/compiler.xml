@@ -9,9 +9,8 @@
         <module name="project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="blog" target="1.5" />
-      <module name="project" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="project" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
