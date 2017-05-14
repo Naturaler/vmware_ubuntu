@@ -25,6 +25,26 @@ public class ArticleDao implements IArticleDao {
         return jdbcTemplate.query(sql, new ArticleRowMapper());
     }
 
+    public void add(Article article) {
+        final String sql = "INSERT INTO " + ARTICLE_TABLE +
+                "(title, content, author, type, create_datetime, update_datetime) " +
+                "VALUES(?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, article.getTitle(), article.getContent(), article.getAuthor(),
+                article.getType(), article.getCraeteDatetime(), article.getUpdateDatetime());
+    }
+
+    public void update(Article article) {
+        final String sql = "UPDATE " + ARTICLE_TABLE + " SET title = ?, content = ?, author = ?, " +
+                "type = ?, update_datetime = ?";
+        jdbcTemplate.update(sql, article.getTitle(), article.getContent(), article.getAuthor(),
+                article.getType(), article.getUpdateDatetime());
+    }
+
+    public void delete(Integer id) {
+        final String sql = "DELETE FROM " + ARTICLE_TABLE + " WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
     private class ArticleRowMapper implements RowMapper<Article> {
         public Article mapRow(ResultSet resultSet, int i) throws SQLException {
             Article article = new Article();
@@ -33,6 +53,7 @@ public class ArticleDao implements IArticleDao {
             article.setAuthor(resultSet.getString("author"));
             article.setType(resultSet.getString("type"));
             article.setCraeteDatetime(resultSet.getDate("create_datetime"));
+            article.setUpdateDatetime(resultSet.getDate("update_datetime"));
             return article;
         }
     }

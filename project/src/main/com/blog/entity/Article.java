@@ -1,5 +1,7 @@
 package com.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 /**
@@ -10,7 +12,10 @@ public class Article {
     private String content;
     private String author;
     private String type;
+    @JsonIgnore
     private Date craeteDatetime;
+    @JsonIgnore
+    private Date updateDatetime;
 
     @Override
     public String toString() {
@@ -20,6 +25,7 @@ public class Article {
                 ", author='" + author + '\'' +
                 ", type='" + type + '\'' +
                 ", craeteDatetime=" + craeteDatetime +
+                ", updateDatetime=" + updateDatetime +
                 '}';
     }
 
@@ -61,5 +67,13 @@ public class Article {
 
     public void setCraeteDatetime(Date craeteDatetime) {
         this.craeteDatetime = craeteDatetime;
+    }
+
+    public Date getUpdateDatetime() {
+        return updateDatetime;
+    }
+
+    public void setUpdateDatetime(Date updateDatetime) {
+        this.updateDatetime = updateDatetime;
     }
 }

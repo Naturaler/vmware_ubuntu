@@ -1,14 +1,16 @@
 package com.blog.web;
 
-import com.blog.dao.IArticleDao;
+import com.blog.dto.ArticleDto;
+import com.blog.dto.ResponseDto;
 import com.blog.entity.Article;
+import com.blog.global.Status;
+import com.blog.service.IArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,13 +20,35 @@ import java.util.List;
 @RequestMapping("/article")
 public class ArticleController {
     private Logger logger = LoggerFactory.getLogger(ArticleController.class);
-    @Resource(name = "articleDao")
-    private IArticleDao articleDao;
+    @Resource(name = "articleService")
+    private IArticleService articleService;
 
     @GetMapping("/list")
-    public List<Article> listArticles() {
-        logger.info("== info list articles ==");
-        logger.debug("== debug list articles ==");
-        return articleDao.listArticles();
+    public ResponseDto listArticles() {
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setStatus(Status.OperateSuccess);
+        ArticleDto articleDto = new ArticleDto();
+//        articleDto.setArticle();
+//        responseDto.setData();
+        List<Article> articles = articleService.listArticles();
+        return responseDto;
+    }
+
+    @PostMapping("/add")
+    public void addArticle(@RequestBody Article article) {
+        article.setCraeteDatetime(new Date());
+        article.setUpdateDatetime(new Date());
+        articleService.addArticle(article);
+    }
+
+    @PostMapping("/update")
+    public void updateArticle(@RequestBody Article article) {
+        article.setUpdateDatetime(new Date());
+        articleService.updateArticle(article);
+    }
+
+    @GetMapping("/delete")
+    public void deleteArticle(@RequestParam Integer id) {
+        articleService.deleteArticleById(id);
     }
 }

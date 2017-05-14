@@ -9,4 +9,10 @@ import java.util.List;
  */
 public interface IArticleDao {
     List<Article> listArticles();
+
+    void add(Article article);
+
+    void update(Article article);
+
+    void delete(Integer id);
 }
