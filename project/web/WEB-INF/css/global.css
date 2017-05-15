@@ -1,0 +1,38 @@
+* {
+    margin:0;
+    padding:0;
+}
+a {
+
+}
+li {
+    /*去掉原点*/
+    list-style: none;
+}
+iframe {
+    width: 8000px;
+    margin-left: auto;
+    margin-right: auto;
+    /*去掉滚动条*/
+    overflow-scrolling: unset;
+    /*去掉边框*/
+    border: none;
+}
+#blog {
+    width: 1000px;
+    height: 700px;
+}
+#head {
+    width: 8000px;
+    height: 50px;
+}
+#content {
+    width: 8000px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#tail {
+    width: 8000px;
+    height: 50px;
+}
