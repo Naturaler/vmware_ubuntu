@@ -1,0 +1,4 @@
+提交git步骤：
+1、提交：git add 文件名
+2、确认：git commit -m "备注"
+3、同步github：git push -u origin master

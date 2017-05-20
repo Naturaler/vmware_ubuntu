@@ -1,0 +1,50 @@
+#index_article {
+    width: 65%;
+    height: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+}
+.article_title {
+    font-size: 25px;
+}
+.article_info {
+    color: gray;
+    font-size: 15px;
+}
+.article_content {
+    color: #6f6f6f;
+    font-size: 20px;
+}
+.article_readmore {
+    color: #6f6f6f;
+    font-size: 22px;
+    /*文字下划线*/
+    text-decoration: underline;
+}
+#index_page_num {
+    width: 65%;
+    height: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+.index_page_button,.index_page_button_num {
+    color: #000000;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    background-color: white;
+    border: none;
+}
+.index_page_button:hover,.index_page_button_num:hover {
+    background-color: lightgray;
+    /*可点击手势*/
+    cursor: pointer;
+}
+.index_page_button {
+    width: 80px;
+}
+.index_page_button_num {
+     width: 30px;
+ }

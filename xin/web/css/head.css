@@ -1,0 +1,23 @@
+ul {
+    margin-left: auto;
+    margin-right: auto;
+    width: 480px;
+    height: 100%;
+    text-align: center;
+}
+ul li,a {
+    width: 50px;
+    display: inline-block;
+}
+ul li {
+    float: left;
+    height: 100%;
+}
+a:hover {
+    background-color: lightgray;
+}
+img {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
