@@ -3,7 +3,6 @@ package com.blog.web;
 import com.blog.dto.ArticleDto;
 import com.blog.dto.ResponseDto;
 import com.blog.entity.Article;
-import com.blog.global.Status;
 import com.blog.global.StatusFactory;
 import com.blog.service.IArticleService;
 import org.slf4j.Logger;
@@ -29,12 +28,13 @@ public class ArticleController {
 //        responseDto.setStatus(Status.OperateSuccess);
         responseDto.setStatus(StatusFactory.getStatusByCode(200));
         responseDto.setData(ArticleDto.getINstances(articleService.listArticles()));
+        logger.info("responseDto" + responseDto.toString());
         return responseDto;
     }
 
     @PostMapping("/add")
     public void addArticle(@RequestBody Article article) {
-        article.setCraeteDatetime(new Date());
+        article.setCreateDatetime(new Date());
         article.setUpdateDatetime(new Date());
         articleService.addArticle(article);
     }

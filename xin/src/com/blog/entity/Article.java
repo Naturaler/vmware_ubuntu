@@ -1,5 +1,6 @@
 package com.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -12,8 +13,9 @@ public class Article {
     private String content;
     private String author;
     private String type;
-    @JsonIgnore
-    private Date craeteDatetime;
+    // 格式化日期属性
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date createDatetime;
     @JsonIgnore
     private Date updateDatetime;
 
@@ -24,7 +26,7 @@ public class Article {
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", type='" + type + '\'' +
-                ", craeteDatetime=" + craeteDatetime +
+                ", createDatetime=" + createDatetime +
                 ", updateDatetime=" + updateDatetime +
                 '}';
     }
@@ -61,12 +63,12 @@ public class Article {
         this.type = type;
     }
 
-    public Date getCraeteDatetime() {
-        return craeteDatetime;
+    public Date getCreateDatetime() {
+        return createDatetime;
     }
 
-    public void setCraeteDatetime(Date craeteDatetime) {
-        this.craeteDatetime = craeteDatetime;
+    public void setCreateDatetime(Date createDatetime) {
+        this.createDatetime = createDatetime;
     }
 
     public Date getUpdateDatetime() {

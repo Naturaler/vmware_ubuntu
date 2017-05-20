@@ -12,15 +12,19 @@
 <div id="blog" >
     <iframe src="pages/head.html" ></iframe>
     <div id="content">
-        <div id="index_article">
-            <p class="article_title">《人类简史》</p>
-            <br>
-            <p class="article_info"><span>发表于 2017.05.18</span>&nbsp;|&nbsp;<span>分类于 literaure</span></p>
-            <br>
-            <p class="article_content">在用最基本的JDBC拉取数据的时候，由于拉取的是海量数据，所以程序跑了一段时间之后报java.lang.OutOfMemoryError: Java heap space，这个错误很简单，也很好解决，网上一搜一大把，只需要设置ResultSet获取数据模式为row-by-row，但是总结多数的解决方案是如下两种：① 以PreparedStatement为例，需要设置四个参数123preparedS ...</p>
-            <br>
-            <p class="article_readmore">阅读全文</p>
+        <!-- 文章列表 start -->
+        <div id="articles">
+            <div id="index_article">
+                <p class="article_title">《人类简史》</p>
+                <br>
+                <p class="article_info"><span>发表于 2017.05.18</span>&nbsp;|&nbsp;<span>分类于 literaure</span></p>
+                <br>
+                <p class="article_content">在用最基本的JDBC拉取数据的时候，由于拉取的是海量数据，所以程序跑了一段时间之后报java.lang.OutOfMemoryError: Java heap space，这个错误很简单，也很好解决，网上一搜一大把，只需要设置ResultSet获取数据模式为row-by-row，但是总结多数的解决方案是如下两种：① 以PreparedStatement为例，需要设置四个参数123preparedS ...</p>
+                <br>
+                <p class="article_readmore">阅读全文</p>
+            </div>
         </div>
+        <!-- 文章列表 end -->
         <div id="index_page_num">
             <button class="index_page_button" type="button" onclick="textclick()" disabled="disabled">上一页</button>
             <button class="index_page_button_num" type="button" onclick="textclick()">1</button>

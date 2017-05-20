@@ -30,7 +30,7 @@ public class ArticleDao implements IArticleDao {
                 "(title, content, author, type, create_datetime, update_datetime) " +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, article.getTitle(), article.getContent(), article.getAuthor(),
-                article.getType(), article.getCraeteDatetime(), article.getUpdateDatetime());
+                article.getType(), article.getCreateDatetime(), article.getUpdateDatetime());
     }
 
     public void update(Article article) {
@@ -52,7 +52,7 @@ public class ArticleDao implements IArticleDao {
             article.setContent(resultSet.getString("content"));
             article.setAuthor(resultSet.getString("author"));
             article.setType(resultSet.getString("type"));
-            article.setCraeteDatetime(resultSet.getDate("create_datetime"));
+            article.setCreateDatetime(resultSet.getDate("create_datetime"));
             article.setUpdateDatetime(resultSet.getDate("update_datetime"));
             return article;
         }
