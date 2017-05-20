@@ -25,6 +25,13 @@ public class ArticleDao implements IArticleDao {
         return jdbcTemplate.query(sql, new ArticleRowMapper());
     }
 
+    @Override
+    public List<Article> listByPagination(Integer pagination) {
+        final int index = (pagination - 1) * 10;
+        final String sql = "SELECT * FROM " + ARTICLE_TABLE + " LIMIT ?,10";
+        return jdbcTemplate.query(sql, new ArticleRowMapper(), index);
+    }
+
     public void add(Article article) {
         final String sql = "INSERT INTO " + ARTICLE_TABLE +
                 "(title, content, author, type, create_datetime, update_datetime) " +

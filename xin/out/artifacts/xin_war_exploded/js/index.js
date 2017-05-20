@@ -28,6 +28,10 @@ function loadArticles() {
                     title.innerHTML = value.title;
                     /* 创建br */
                     var br = document.createElement("br");
+                    var br1 = document.createElement("br");
+                    var br2 = document.createElement("br");
+                    var br3 = document.createElement("br");
+                    var br4 = document.createElement("br");
                     /* 文章信息 */
                     var info = document.createElement("p");
                     info.setAttribute("class", "article_info");
@@ -48,14 +52,15 @@ function loadArticles() {
                     readMore.setAttribute("class", "article_readmore");
                     readMore.innerHTML = "阅读全文>>";
 
+                    article.appendChild(br)
                     article.appendChild(title);
-                    article.appendChild(br);
+                    article.appendChild(br1);
                     article.appendChild(info);
-                    article.appendChild(br);
+                    article.appendChild(br2);
                     article.appendChild(content);
-                    article.appendChild(br);
+                    article.appendChild(br3);
                     article.appendChild(readMore);
-                    article.appendChild(br);
+                    article.appendChild(br4);
 
                     articles.appendChild(article);
                 });

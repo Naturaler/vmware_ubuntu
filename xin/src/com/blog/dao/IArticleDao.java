@@ -10,6 +10,8 @@ import java.util.List;
 public interface IArticleDao {
     List<Article> listArticles();
 
+    List<Article> listByPagination(Integer pagination);
+
     void add(Article article);
 
     void update(Article article);

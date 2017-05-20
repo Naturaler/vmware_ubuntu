@@ -10,6 +10,8 @@ import java.util.List;
 public interface IArticleService {
     List<Article> listArticles();
 
+    List<Article> listByPagination(Integer pagination);
+
     void addArticle(Article article);
 
     void updateArticle(Article article);

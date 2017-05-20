@@ -3,6 +3,7 @@ package com.blog.web;
 import com.blog.dto.ArticleDto;
 import com.blog.dto.ResponseDto;
 import com.blog.entity.Article;
+import com.blog.exception.IllegalArgumentException;
 import com.blog.global.StatusFactory;
 import com.blog.service.IArticleService;
 import org.slf4j.Logger;
@@ -25,10 +26,20 @@ public class ArticleController {
     @GetMapping("/list")
     public ResponseDto listArticles() {
         ResponseDto responseDto = new ResponseDto();
-//        responseDto.setStatus(Status.OperateSuccess);
         responseDto.setStatus(StatusFactory.getStatusByCode(200));
         responseDto.setData(ArticleDto.getINstances(articleService.listArticles()));
         logger.info("responseDto" + responseDto.toString());
+        return responseDto;
+    }
+
+    @GetMapping("/listByPagination")
+    public ResponseDto listByPagination(@RequestParam Integer pagination) {
+        if (pagination < 1) {
+            throw new IllegalArgumentException("illegal argument exception");
+        }
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setData(ArticleDto.getINstances(articleService.listByPagination(pagination)));
         return responseDto;
     }
 

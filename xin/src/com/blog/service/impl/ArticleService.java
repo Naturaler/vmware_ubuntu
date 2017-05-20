@@ -20,6 +20,11 @@ public class ArticleService implements IArticleService {
         return articleDao.listArticles();
     }
 
+    @Override
+    public List<Article> listByPagination(Integer pagination) {
+        return articleDao.listByPagination(pagination);
+    }
+
     public void addArticle(Article article) {
         articleDao.add(article);
     }
