@@ -27,11 +27,12 @@
         </div>
         <!-- 文章列表 end -->
         <div id="index_page_num">
-            <button class="index_page_button" type="button" onclick="textclick()" disabled="disabled">上一页</button>
-            <button class="index_page_button_num" type="button" onclick="textclick()">1</button>
-            <button class="index_page_button_num" type="button" onclick="textclick()">2</button>
-            <button class="index_page_button_num" type="button" onclick="textclick()">3</button>
-            <button class="index_page_button" type="button" onclick="loadArticles()">下一页</button>
+            <button id="index_pre_button" class="index_page_button" type="button" onclick="previousPage()">上一页</button>
+            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(1)">1</button>
+            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(2)">2</button>
+            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(3)">3</button>
+            <button class="index_page_button_num" type="button" >...</button>
+            <button id="index_next_button" class="index_page_button" type="button" onclick="nextPage()">下一页</button>
         </div>
         <br>
     </div>

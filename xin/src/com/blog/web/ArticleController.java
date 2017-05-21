@@ -1,6 +1,7 @@
 package com.blog.web;
 
 import com.blog.dto.ArticleDto;
+import com.blog.dto.DtoWrapper;
 import com.blog.dto.ResponseDto;
 import com.blog.entity.Article;
 import com.blog.exception.IllegalArgumentException;
@@ -27,7 +28,7 @@ public class ArticleController {
     public ResponseDto listArticles() {
         ResponseDto responseDto = new ResponseDto();
         responseDto.setStatus(StatusFactory.getStatusByCode(200));
-        responseDto.setData(ArticleDto.getINstances(articleService.listArticles()));
+        responseDto.setData(ArticleDto.getInstances(articleService.listArticles()));
         logger.info("responseDto" + responseDto.toString());
         return responseDto;
     }
@@ -39,7 +40,15 @@ public class ArticleController {
         }
         ResponseDto responseDto = new ResponseDto();
         responseDto.setStatus(StatusFactory.getStatusByCode(200));
-        responseDto.setData(ArticleDto.getINstances(articleService.listByPagination(pagination)));
+        responseDto.setData(ArticleDto.getInstances(articleService.listByPagination(pagination)));
+        return responseDto;
+    }
+
+    @GetMapping("/getSumPagination")
+    public ResponseDto getSumPagination() {
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setData(DtoWrapper.getInstances(articleService.getSumPagination()));
         return responseDto;
     }
 
@@ -60,4 +69,10 @@ public class ArticleController {
     public void deleteArticle(@RequestParam Integer id) {
         articleService.deleteArticleById(id);
     }
+
+    /*@ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    private void illegalArgumentError() {
+        System.out.println(" === illegel argument === ");
+    }*/
 }

@@ -12,6 +12,8 @@ public interface IArticleDao {
 
     List<Article> listByPagination(Integer pagination);
 
+    Integer getSumPagination();
+
     void add(Article article);
 
     void update(Article article);

@@ -32,6 +32,12 @@ public class ArticleDao implements IArticleDao {
         return jdbcTemplate.query(sql, new ArticleRowMapper(), index);
     }
 
+    @Override
+    public Integer getSumPagination() {
+        final String sql = "SELECT COUNT(title) FROM " + ARTICLE_TABLE;
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
     public void add(Article article) {
         final String sql = "INSERT INTO " + ARTICLE_TABLE +
                 "(title, content, author, type, create_datetime, update_datetime) " +

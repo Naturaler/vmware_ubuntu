@@ -4,6 +4,7 @@ import com.blog.entity.Article;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,13 +14,19 @@ public class ArticleDto implements Dto {
     @JsonUnwrapped
     private Article article;
 
-    public static List<ArticleDto> getINstances(List<Article> articles) {
+    public static List<ArticleDto> getInstances(Article article) {
+        ArticleDto articleDto = new ArticleDto();
+        articleDto.setArticle(article);
+        return Collections.singletonList(articleDto);
+    }
+
+    public static List<ArticleDto> getInstances(List<Article> articles) {
         List<ArticleDto> articleDtos = new ArrayList<>();
-        articles.forEach(article1 -> articleDtos.add(getINstance(article1)));
+        articles.forEach(article1 -> articleDtos.add(getInstance(article1)));
         return articleDtos;
     }
 
-    public static ArticleDto getINstance(Article article) {
+    public static ArticleDto getInstance(Article article) {
         ArticleDto articleDto = new ArticleDto();
         articleDto.setArticle(article);
         return articleDto;
@@ -39,4 +46,5 @@ public class ArticleDto implements Dto {
     public void setArticle(Article article) {
         this.article = article;
     }
+
 }

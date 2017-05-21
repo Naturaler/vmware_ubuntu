@@ -12,6 +12,8 @@ public interface IArticleService {
 
     List<Article> listByPagination(Integer pagination);
 
+    Integer getSumPagination();
+
     void addArticle(Article article);
 
     void updateArticle(Article article);
