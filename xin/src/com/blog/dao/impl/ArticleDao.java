@@ -34,7 +34,8 @@ public class ArticleDao implements IArticleDao {
 
     @Override
     public Integer getSumPagination() {
-        final String sql = "SELECT COUNT(title) FROM " + ARTICLE_TABLE;
+        // 向上取整（每页固定显示10篇文章）
+        final String sql = "SELECT ceil(count(title)/10) FROM " + ARTICLE_TABLE;
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 

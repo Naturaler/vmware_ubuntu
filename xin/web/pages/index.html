@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/global.css" type="text/css" />
     <link rel="stylesheet" href="css/head.css" type="text/css" />
     <link rel="stylesheet" href="css/index.css" type="text/css" />
-    <script src="js/index.js"></script>
+    <script type="text/javascript" src="js/index.js" ></script>
     <title>welcome</title>
 </head>
 <body onload="loadArticles()">
@@ -28,10 +28,10 @@
         <!-- 文章列表 end -->
         <div id="index_page_num">
             <button id="index_pre_button" class="index_page_button" type="button" onclick="previousPage()">上一页</button>
-            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(1)">1</button>
+            <!--<button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(1)">1</button>
             <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(2)">2</button>
-            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(3)">3</button>
-            <button class="index_page_button_num" type="button" >...</button>
+            <button class="index_page_button_num" type="button" onclick="loadArticlesByPagination(3)" style="background-color: lightgray">3</button>
+            <button class="index_page_button_num" type="button" >...</button>-->
             <button id="index_next_button" class="index_page_button" type="button" onclick="nextPage()">下一页</button>
         </div>
         <br>
