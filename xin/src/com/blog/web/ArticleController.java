@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Date;
 
+import static com.blog.global.StatusFactory.STATUS_SUCCESS;
+
 /**
  * Created by xin on 17-5-13.
  */
@@ -28,7 +30,7 @@ public class ArticleController {
     @GetMapping("/list")
     public ResponseDto listArticles() {
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_SUCCESS));
         responseDto.setData(ArticleDto.getInstances(articleService.listArticles()));
         logger.info("responseDto" + responseDto.toString());
         return responseDto;
@@ -40,7 +42,7 @@ public class ArticleController {
             throw new IllegalArgumentException("illegal argument exception");
         }
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_SUCCESS));
         responseDto.setData(ArticleDto.getInstances(articleService.listByPagination(pagination)));
         return responseDto;
     }
@@ -48,7 +50,7 @@ public class ArticleController {
     @GetMapping("/getSumPagination")
     public ResponseDto getSumPagination() {
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setStatus(StatusFactory.getStatusByCode(200));
+        responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_SUCCESS));
         responseDto.setData(DtoWrapper.getInstances(articleService.getSumPagination()));
         return responseDto;
     }

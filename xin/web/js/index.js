@@ -10,13 +10,13 @@ function loadArticles() {
     initXmlhttp();
     xmlhttp.onreadystatechange = function() {
         /*判断请求结果状态*/
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             /* 请求返回值：string类型 */
             var responseText = xmlhttp.responseText;
             /* 将string类型的json数据转换为json对象 */
             var response = JSON.parse(responseText);
             var code = response.code;
-            if(code == 200) {
+            if(code === 200) {
                 var data = response.data;
                 appendArticle(data);
             }else {
@@ -25,7 +25,7 @@ function loadArticles() {
             }
         }
     };
-    xmlhttp.open("GET","article/listByPagination?pagination=1", false);
+    xmlhttp.open("GET","/xin/article/listByPagination?pagination=1", false);
     xmlhttp.send();
 }
 function loadArticlesByPagination(pagination) {
@@ -35,13 +35,13 @@ function loadArticlesByPagination(pagination) {
     initXmlhttp();
     xmlhttp.onreadystatechange = function() {
         /*判断请求结果状态*/
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             /* 请求返回值：string类型 */
             var responseText = xmlhttp.responseText;
             /* 将string类型的json数据转换为json对象 */
             var response = JSON.parse(responseText);
             var code = response.code;
-            if(code == 200) {
+            if(code === 200) {
                 var data = response.data;
                 /* 先清空所有文章，再重新加载 */
                 removeAllArticle();
@@ -52,20 +52,20 @@ function loadArticlesByPagination(pagination) {
             }
         }
     };
-    xmlhttp.open("GET","article/listByPagination?pagination=" + pagination, false);
+    xmlhttp.open("GET","/xin/article/listByPagination?pagination=" + pagination, false);
     xmlhttp.send();
 }
 function getSumPagination() {
     initXmlhttp();
     console.log("successfully create xmlhttp");
     xmlhttp.onreadystatechange = function () {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var responseText = xmlhttp.responseText;
             console.log("sum pagination responseText:" + responseText);
             var response = JSON.parse(responseText);
             console.log("sum pagination response:" + response);
             var code = response.code;
-            if(code == 200) {
+            if(code === 200) {
                 var data = response.data;
                 sumPagination = data[0].object;
                 console.log("sum pagination :" + sumPagination);
@@ -80,15 +80,16 @@ function getSumPagination() {
         }
     };
     /* 参数解释：请求方式 请求url 是否异步请求*/
-    xmlhttp.open("GET","article/getSumPagination", false);
+    xmlhttp.open("GET","/xin/article/getSumPagination", false);
     xmlhttp.send();
 }
 function showPagination() {
     var paginationNums = document.createElement("div");
     paginationNums.setAttribute("id", "index_page_button_nums");
     // 最多只显示3个页码
-    var maxPagination = (currentPagination + 2) > sumPagination ? sumPagination : (currentPagination + 2);
-    for(var i = currentPagination; i <= maxPagination; i++) {
+    var minPagination = (currentPagination - 1) > 0 ? (currentPagination - 1) : 1;
+    var maxPagination = (minPagination + 2) > sumPagination ? sumPagination : (minPagination + 2);
+    for(var i = minPagination; i <= maxPagination; i++) {
         var paginationButton = document.createElement("button");
         paginationButton.setAttribute("class", "index_page_button_num");
         paginationButton.setAttribute("type", "button");
@@ -100,7 +101,7 @@ function showPagination() {
         paginationNums.appendChild(paginationButton);
     }
     // 是否显示省略号
-    if(sumPagination > (currentPagination + 2)) {
+    if(sumPagination > (minPagination + 2)) {
         var ellipsis = document.createElement("button");
         ellipsis.setAttribute("class", "index_page_button_num");
         ellipsis.setAttribute("type", "button");
@@ -113,13 +114,15 @@ function showPagination() {
         preButton.setAttribute("class", "index_page_button_num_disabled");
         preButton.setAttribute("disabled", "disabled");
     }else {
-        preButton.setAttribute("class", "index_page_button_num");
+        preButton.setAttribute("class", "index_page_button");
+        preButton.removeAttribute("disabled");
     }
     if(currentPagination === sumPagination) {
         nextButton.setAttribute("class", "index_page_button_num_disabled");
         nextButton.setAttribute("disabled", "disabled");
-    }else
-        nextButton.setAttribute("class", "index_page_button_num");
+    }else {
+        nextButton.setAttribute("class", "index_page_button");
+        nextButton.removeAttribute("disabled");
     }
     var paginationButtons = document.getElementById("index_page_num");
     // 在“下一页”前添加页码按钮
