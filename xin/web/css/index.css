@@ -29,7 +29,7 @@
     margin-left: auto;
     margin-top: 10px;
 }
-.index_page_button,.index_page_button_num {
+.index_page_button, .index_page_button_num, .index_page_button_num_disabled {
     color: #000000;
     font-size: 15px;
     height: 30px;
@@ -42,7 +42,15 @@
     /*可点击手势*/
     cursor: pointer;
 }
-.index_page_button {
+#index_page_button_nums {
+    display: inline;
+}
+/* 禁止点击 */
+.index_page_button_num_disabled:hover {
+    /*cursor: default;*/
+    cursor: not-allowed;
+}
+.index_page_button, .index_page_button_num_disabled {
     width: 80px;
 }
 .index_page_button_num {

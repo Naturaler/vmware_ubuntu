@@ -9,6 +9,7 @@ import com.blog.global.StatusFactory;
 import com.blog.service.IArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -70,9 +71,9 @@ public class ArticleController {
         articleService.deleteArticleById(id);
     }
 
-    /*@ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    private void illegalArgumentError() {
-        System.out.println(" === illegel argument === ");
-    }*/
+    private String illegalArgumentError(IllegalArgumentException e) {
+        return e.getMessage();
+    }
 }
