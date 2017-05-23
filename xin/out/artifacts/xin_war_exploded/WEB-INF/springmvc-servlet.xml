@@ -11,12 +11,17 @@
     <mvc:default-servlet-handler />
     <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven />
+    <!-- 自定义拦截器 -->
+    <!--<mvc:interceptors>
+        <bean class="com.blog.web.LoginInterceptor" />
+    </mvc:interceptors>-->
     <!-- configure the InternalResourceViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
         <!-- 前缀 -->
-        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!--<property name="prefix" value="/WEB-INF/jsp/" />-->
+        <property name="prefix" value="/pages/" />
         <!-- 后缀 -->
-        <property name="suffix" value=".jsp" />
+        <property name="suffix" value=".html" />
     </bean>
 </beans>

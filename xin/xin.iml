@@ -37,5 +37,6 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.logback-extensions:logback-ext-spring:0.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.12" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

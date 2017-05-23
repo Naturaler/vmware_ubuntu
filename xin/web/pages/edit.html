@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/xin/ckeditor/ckeditor.js"></script>
+    <title>edit</title>
+</head>
+<body>
+<form method="post" action="/xin/article/add" >
+    标题：<input type="text" name="title">
+    文章类型：<input type="text" name="type">
+    <!-- 使用ckeditor start -->
+    <!-- textarea和脚本顺序不能变 -->
+    内容：
+    <textarea name="editor" id="editor"></textarea>
+    <script type="text/javascript">CKEDITOR.replace('editor')</script>
+    <!-- 使用ckeditor end -->
+    <!-- 获取ckeditor的内容 -->
+    <button onclick="alert(CKEDITOR.instances.editor.getData())" >click me</button>
+</form>
+</body>
+</html>

@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by xin on 17-5-13.
  */
 public class Article {
+    private Integer id;
     private String title;
     private String content;
     private String author;
@@ -22,13 +23,22 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", type='" + type + '\'' +
                 ", createDatetime=" + createDatetime +
                 ", updateDatetime=" + updateDatetime +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {

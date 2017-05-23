@@ -9,12 +9,11 @@
 <body>
 <div id="login_box">
     <form method="post" action="/xin/login">
-        <div><span class="legend">用户名：</span><input type="text" name="username" class="input_txt"></div>
-        <div><span class="legend">密码：</span><input type="password" name="password" class="input_txt"></div>
-        <div>
-            <input type="submit" value="登录" class="input_button">
-            <input type="button" value="重置" class="input_button">
-        </div>
+        <p>用户登录</p>
+        <!-- 可以通过placeholder属性设置提示内容 -->
+        <input type="text" name="username" class="input_txt" placeholder="请输入用户名">
+        <input type="password" name="password" class="input_txt" placeholder="请输入密码">
+        <input type="submit" value="登录" class="input_button">
     </form>
 </div>
 </body>

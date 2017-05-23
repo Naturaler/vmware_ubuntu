@@ -62,6 +62,7 @@ public class ArticleDao implements IArticleDao {
     private class ArticleRowMapper implements RowMapper<Article> {
         public Article mapRow(ResultSet resultSet, int i) throws SQLException {
             Article article = new Article();
+            article.setId(resultSet.getInt("id"));
             article.setTitle(resultSet.getString("title"));
             article.setContent(resultSet.getString("content"));
             article.setAuthor(resultSet.getString("author"));
