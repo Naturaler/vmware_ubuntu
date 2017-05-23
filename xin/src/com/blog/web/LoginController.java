@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by xin on 17-5-22.
  */
-@RestController()
-@RequestMapping("/login")
+@RestController
 public class LoginController {
-    public ResponseDto login(@RequestBody User user) {
+    @RequestMapping("/login")
+    public ResponseDto login(User user) {
         ResponseDto responseDto = new ResponseDto();
         if (user.getUsername().equals("admin") && user.getPassword().equals("123")) {
             responseDto.setStatus(StatusFactory.getStatusByCode(StatusFactory.STATUS_SUCCESS));
