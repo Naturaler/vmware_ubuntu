@@ -30,6 +30,16 @@ public class ArticleService implements IArticleService {
         return articleDao.getSumPagination();
     }
 
+    @Override
+    public Article getArticleById(Integer id) {
+        return articleDao.getArticleById(id);
+    }
+
+    @Override
+    public Integer countArticles() {
+        return articleDao.countArticles();
+    }
+
     public void addArticle(Article article) {
         articleDao.add(article);
     }

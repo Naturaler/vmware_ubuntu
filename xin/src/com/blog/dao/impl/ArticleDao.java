@@ -3,6 +3,7 @@ package com.blog.dao.impl;
 import com.blog.dao.IArticleDao;
 import com.blog.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,22 @@ public class ArticleDao implements IArticleDao {
     public Integer getSumPagination() {
         // 向上取整（每页固定显示10篇文章）
         final String sql = "SELECT ceil(count(title)/10) FROM " + ARTICLE_TABLE;
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
+    @Override
+    public Article getArticleById(Integer id) {
+        final String sql = "SELECT * FROM " + ARTICLE_TABLE + " WHERE id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new ArticleRowMapper(), id);
+        }catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Integer countArticles() {
+        final String sql = "SELECT COUNT(title) FROM " + ARTICLE_TABLE;
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 

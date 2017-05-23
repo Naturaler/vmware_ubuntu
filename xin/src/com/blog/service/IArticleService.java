@@ -14,6 +14,10 @@ public interface IArticleService {
 
     Integer getSumPagination();
 
+    Article getArticleById(Integer id);
+
+    Integer countArticles();
+
     void addArticle(Article article);
 
     void updateArticle(Article article);

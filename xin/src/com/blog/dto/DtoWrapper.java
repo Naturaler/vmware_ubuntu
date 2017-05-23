@@ -26,7 +26,7 @@ public class DtoWrapper implements Dto {
         return dtos;
     }
 
-    public static Dto getInstance(Object o) {
+    private static Dto getInstance(Object o) {
         return new DtoWrapper(o);
     }
 

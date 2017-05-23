@@ -14,6 +14,10 @@ public interface IArticleDao {
 
     Integer getSumPagination();
 
+    Article getArticleById(Integer id);
+
+    Integer countArticles();
+
     void add(Article article);
 
     void update(Article article);

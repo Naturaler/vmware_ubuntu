@@ -132,14 +132,6 @@ function showPagination() {
 function removePagination() {
     var paginationNums = document.getElementById("index_page_button_nums");
     paginationNums.parentNode.removeChild(paginationNums);
-    /*ar paginationNums = document.getElementsByClassName("index_page_button_num");
-    var paginations = document.getElementById("index_page_num");
-    console.log("paginationNums.length:" + paginationNums.length);
-    for(var i = 0; i < paginationNums.length; i++) {
-        console.log("paginationNums[" + i + "].innerHTML" + paginationNums[i].innerHTML);
-        // paginations.removeChild(paginationNums[0]); // 删除节点是自动更新的，所以只要一直删除第一个即可
-        paginationNums[i].parentNode.removeChild(paginationNums[i]);
-    }*/
 }
 /* 删除文章列表 */
 function removeAllArticle() {

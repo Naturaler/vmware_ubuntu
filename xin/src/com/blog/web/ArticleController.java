@@ -10,11 +10,14 @@ import com.blog.service.IArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.Date;
 
+import static com.blog.global.StatusFactory.STATUS_BADREQUEST;
 import static com.blog.global.StatusFactory.STATUS_SUCCESS;
 
 /**
@@ -53,6 +56,27 @@ public class ArticleController {
         responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_SUCCESS));
         responseDto.setData(DtoWrapper.getInstances(articleService.getSumPagination()));
         return responseDto;
+    }
+
+    @GetMapping("/getArticleById")
+    public ResponseDto getArticleById(@RequestParam Integer id) {
+        ResponseDto responseDto = new ResponseDto();
+        if (id < 0) {
+            responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_BADREQUEST));
+            return responseDto;
+        }
+        Article article = articleService.getArticleById(id);
+        responseDto.setData(DtoWrapper.getInstances(ArticleDto.getInstance(article)));
+        return responseDto;
+    }
+
+    @GetMapping("/id")
+    public ModelAndView getArticle(@RequestParam Integer id) {
+        ModelAndView modelAndView = new ModelAndView("article");
+        Article article = articleService.getArticleById(id);
+        // 保存到modelandview中的数据，将会自动保存到request中
+        modelAndView.addObject("article", article);
+        return modelAndView;
     }
 
     @PostMapping("/add")
