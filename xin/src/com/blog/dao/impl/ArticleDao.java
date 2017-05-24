@@ -7,6 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Created by xin on 17-5-13.
  */
-@Component
+@Repository
 public class ArticleDao implements IArticleDao {
     private final String ARTICLE_TABLE = "article";
     @Autowired

@@ -67,17 +67,19 @@ public class ArticleController {
         }
         Article article = articleService.getArticleById(id);
         responseDto.setData(DtoWrapper.getInstances(ArticleDto.getInstance(article)));
+        responseDto.setStatus(StatusFactory.getStatusByCode(STATUS_SUCCESS));
         return responseDto;
     }
 
-    @GetMapping("/id")
+    // 后台不控制页面跳转
+    /*@GetMapping("/id")
     public ModelAndView getArticle(@RequestParam Integer id) {
         ModelAndView modelAndView = new ModelAndView("article");
         Article article = articleService.getArticleById(id);
         // 保存到modelandview中的数据，将会自动保存到request中
         modelAndView.addObject("article", article);
         return modelAndView;
-    }
+    }*/
 
     @PostMapping("/add")
     public void addArticle(@RequestBody Article article) {

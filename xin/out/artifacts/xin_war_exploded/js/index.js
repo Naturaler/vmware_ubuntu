@@ -57,22 +57,16 @@ function loadArticlesByPagination(pagination) {
 }
 function getSumPagination() {
     initXmlhttp();
-    console.log("successfully create xmlhttp");
     xmlhttp.onreadystatechange = function () {
         if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var responseText = xmlhttp.responseText;
-            console.log("sum pagination responseText:" + responseText);
             var response = JSON.parse(responseText);
-            console.log("sum pagination response:" + response);
             var code = response.code;
             if(code === 200) {
                 var data = response.data;
                 sumPagination = data[0].object;
-                console.log("sum pagination :" + sumPagination);
                 removePagination();
-                console.log("remove all pagination");
                 showPagination();
-                console.log("append all pagination");
             }else {
                 var msg = response.msg;
                 alert(msg);
@@ -143,13 +137,14 @@ function removeAllArticle() {
 function appendArticle(data) {
     /* 插入到页面中 */
     var articles = document.getElementById("articles");
-    data.forEach(function (value) {
+    data.forEach(function (articleInfo) {
         var article = document.createElement("div");
         article.setAttribute("class", "index_article");
         /* 创建标题 */
         var title = document.createElement("p");
         title.setAttribute("class", "article_title");
-        title.innerHTML = value.title;
+        title.setAttribute("onclick", "readArticle(" + articleInfo.id +")");
+        title.innerHTML = articleInfo.title;
         /* 创建br */
         var br = document.createElement("br");
         var br1 = document.createElement("br");
@@ -161,19 +156,20 @@ function appendArticle(data) {
         info.setAttribute("class", "article_info");
         /* 创建时间 */
         var spanCreateDatetime = document.createElement("span");
-        spanCreateDatetime.innerHTML = "发表于 " + value.createDatetime + "&nbsp;|&nbsp;";
+        spanCreateDatetime.innerHTML = "发表于 " + articleInfo.createDatetime + "&nbsp;|&nbsp;";
         /* 文章类型 */
         var spanType = document.createElement("span");
-        spanType.innerHTML = "分类于 " + value.type;
+        spanType.innerHTML = "分类于 " + articleInfo.type;
         info.appendChild(spanCreateDatetime);
         info.appendChild(spanType);
-        /* 文章内热 */
+        /* 文章内容 */
         var content = document.createElement("p");
         content.setAttribute("class", "article_content");
-        content.innerHTML = value.content;
+        content.innerHTML = articleInfo.content;
         /* 阅读全文 */
         var readMore = document.createElement("p");
         readMore.setAttribute("class", "article_readmore");
+        readMore.setAttribute("onclick", "readArticle(" + articleInfo.id +")");
         readMore.innerHTML = "阅读全文>>";
 
         article.appendChild(br);
@@ -188,6 +184,30 @@ function appendArticle(data) {
 
         articles.appendChild(article);
     });
+}
+function readArticle(id) {
+    // 页面跳转
+    window.location.href = "/xin/pages/article.html?id=" + id;
+    /*initXmlhttp();
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var responseText = xmlhttp.responseText;
+            var response = JSON.parse(responseText);
+            var code = response.code;
+            if(code === 200) {
+                var data = response.data;
+                sumPagination = data[0].object;
+                removePagination();
+                showPagination();
+            }else {
+                var msg = response.msg;
+                alert(msg);
+            }
+        }
+    };
+    /!* 参数解释：请求方式 请求url 是否异步请求*!/
+    xmlhttp.open("GET","/xin/article/getArticleById?id=" + id, false);
+    xmlhttp.send();*/
 }
 function previousPage() {
     currentPagination -= 1;
