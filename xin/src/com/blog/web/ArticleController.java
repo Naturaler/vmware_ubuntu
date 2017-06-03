@@ -83,6 +83,7 @@ public class ArticleController {
 
     @PostMapping("/add")
     public void addArticle(@RequestBody Article article) {
+        logger.info("add article:" + article);
         article.setCreateDatetime(new Date());
         article.setUpdateDatetime(new Date());
         articleService.addArticle(article);

@@ -20,7 +20,7 @@ function getArticle() {
         }
     };
     /* 参数解释：请求方式 请求url 是否异步请求*/
-    xmlhttp.open("GET","/xin/article/getArticleById?id=" + id, false);
+    xmlhttp.open("GET","/xin/article/getArticleById?id=" + id, true);
     xmlhttp.send();
 }
 function showArticle(articleInfo) {
@@ -32,7 +32,7 @@ function showArticle(articleInfo) {
     info.setAttribute("class", "article_info");
     var infoTime = document.createElement("span");
     infoTime.innerHTML = "发表于 " + articleInfo.createDatetime;
-    var space = document.createElement("p");
+    var space = document.createElement("span");
     space.innerHTML = "&nbsp;|&nbsp;";
     var infoType = document.createElement("span");
     infoType.innerHTML = "分类于 " + articleInfo.type;

@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="/xin/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/xin/js/index.js"></script>
+    <script type="text/javascript" src="/xin/js/edit.js"></script>
     <title>edit</title>
 </head>
 <body>
-<form method="post" action="/xin/article/add" >
-    标题：<input type="text" name="title">
+<form method="post" action="/xin/article/add">
+
+</form>
+<div class="editArticle">
+    标题：<input type="text" name="title" id="article_title">
     文章类型：
-    <select>
-        <option>literature</option>
-        <option>technology</option>
-        <option>idea</option>
-        <option>java</option>
+    <select id="article_type">
+        <option value="literature">literature</option>
+        <option value="technology">technology</option>
+        <option value="idea">idea</option>
+        <option value="java">java</option>
     </select>
     <!-- 使用ckeditor start -->
     <!-- textarea和脚本顺序不能变 -->
     <textarea name="editor" id="editor"></textarea>
     <script type="text/javascript">CKEDITOR.replace('editor')</script>
     <!-- 使用ckeditor end -->
-    <!-- 获取ckeditor的内容 -->
-    <button onclick="alert(CKEDITOR.instances.editor.getData())" >保存</button>
-</form>
+    <!-- 获取ckeditor的内容:CKEDITOR.instances.editor.getData() -->
+    <button onclick="addArticle()">保存</button>
+</div>
 </body>
 </html>
